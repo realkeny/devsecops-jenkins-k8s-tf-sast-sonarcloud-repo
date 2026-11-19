@@ -312,12 +312,9 @@
       <configuration>
         <org>realkeny</org>
 		<failOnIssues>false</failOnIssues>
-	    <!-- Optional: restrict what triggers a failure if failOnIssues is true -->
-	    <!--
 	    <args>
 	      <arg>--severity-threshold=high</arg>
-	    </args>
-	    -->
+	    </args>	    
       </configuration>
     </plugin>
 <!-- Snyk Changes for SCA Ends Here -->
