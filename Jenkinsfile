@@ -20,7 +20,7 @@ pipeline {
 			container('maven') {
 				withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]){
 					sh '''
-					mvn clean verify sonar-sonarscanner -Dsonar.organization=realkenydevsecopsapp -Dsonar.projectKey=realkenydevsecopsapp -Dsonar.host.url="https://sonarcloud.io" -Dsonar.token=$SONAR_TOKEN
+					mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.organization=realkenydevsecopsapp -Dsonar.projectKey=realkenydevsecopsapp -Dsonar.host.url="https://sonarcloud.io" -Dsonar.token=$SONAR_TOKEN
 					'''
 				}
 			}
