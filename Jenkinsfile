@@ -18,9 +18,11 @@ pipeline {
     stage('CompileandRunSonarAnalysis'){
 		steps{
 			container('maven') {
-				sh '''
-				mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.organization=realkenydevsecopsapp -Dsonar.projectKey=realkenydevsecopsapp -Dsonar.host.url="https://sonarcloud.io" -Dsonar.token=f6b230bd29ffc1997acc91cdf25a9f3b826a440b
-				'''
+				withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]){
+					sh '''
+					mvn clean verify sonar-sonarscanner -Dsonar.organization=realkenydevsecopsapp -Dsonar.projectKey=realkenydevsecopsapp -Dsonar.host.url="https://sonarcloud.io" -Dsonar.token=$SONAR_TOKEN
+					'''
+				}
 			}
 		}
 	}
